@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    hikari:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: "jdbc:mysql://localhost:3306/bootagit_mvp1?useSSL=false&serverTimezone=UTC"
+      username: bootagit
+      password: agit123!@#
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQLDialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+        format_sql: true
+        use_sql_comments: true
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    open-in-view: false
+    show_sql: true
+
+crawling:
+  url: https://boottent.com/camps
