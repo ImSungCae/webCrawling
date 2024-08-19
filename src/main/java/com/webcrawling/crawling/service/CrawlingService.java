@@ -46,7 +46,7 @@ public class CrawlingService {
 //            for (WebElement element : elements) {
                 try {
                     wait.until(ExpectedConditions.elementToBeClickable(element)).click();
-                    js.executeScript("arguments[0].click();", element.findElement(By.cssSelector("th > a")));
+                    js.executeScript("arguments[0].click();", element.findElement(By.xpath("th/a")));
 
                     Set<String> allTabs = webDriver.getWindowHandles();
                     for (String tab : allTabs) {
@@ -81,17 +81,17 @@ public class CrawlingService {
                     String learningEquipment = item.findElement(By.xpath("div[2]/ul/li[1]/ul/li[3]/div/ul/li[2]/div/ul/li[4]/div/div")).getText();
                     String classType = item.findElement(By.xpath("div[2]/ul/li[1]/ul/li[3]/div/ul/li[2]/div/ul/li[6]/div/div/div")).getText();
                     String studyPlace = item.findElement(By.xpath("div[2]/ul/li[1]/ul/li[3]/div/ul/li[2]/div/ul/li[8]/div/ul/div")).getText();
-                    String cost = item.findElement(By.xpath("div[2]/ul/li[1]/ul/li[6]/div/ul/li/div/ul/li[2]/div/div")).getText();
-                    String tomorrowLearningCard = item.findElement(By.xpath("div[2]/ul/li[1]/ul/li[6]/div/ul/li/div/ul/li[4]/div/span/span")).getText();
+                    String cost = item.findElement(By.xpath("div[2]/ul/li[1]/ul/li[4]/div/ul/li/div/ul/li[2]/div/div")).getText();
+                    String tomorrowLearningCard = item.findElement(By.xpath("div[2]/ul/li[1]/ul/li/div/ul/li/div/ul/li[4]/div/span/span")).getText();
                     String[] subsidy = item.findElement(By.xpath("div[2]/ul/li[1]/ul/li[6]/div/ul/li/div/ul/li[6]/div/div")).getText().split("\n");
                     Map<String, List<String>> curriculumMap = new HashMap<>();
                     WebElement curriculum = item.findElement(By.xpath("div[2]/ul/li[3]/ul/li/div/div[2]/div[1]"));
-                    for (int i = 0; i < curriculum.findElements(By.cssSelector("h3")).size(); i++) {
+                    for (int i = 0; i < curriculum.findElements(By.xpath("h3")).size(); i++) {
                         List<String> curriculumList = new ArrayList<>();
-                        for (int j = 0; j < curriculum.findElements(By.cssSelector("div")).get(i).findElements(By.cssSelector("ul/li")).size(); j++) {
-                            curriculumList.add(curriculum.findElements(By.cssSelector("div")).get(i).findElements(By.cssSelector("ul/li")).get(j).getText());
+                        for (int j = 0; j < curriculum.findElements(By.xpath("div")).get(i).findElements(By.xpath("ul/li")).size(); j++) {
+                            curriculumList.add(curriculum.findElements(By.xpath("div")).get(i).findElements(By.xpath("ul/li")).get(j).getText());
                         }
-                        curriculumMap.put(curriculum.findElements(By.cssSelector("h3")).get(i).getText(), curriculumList);
+                        curriculumMap.put(curriculum.findElements(By.xpath("h3")).get(i).getText(), curriculumList);
                     }
 
                     log.info("educationalName : {}", educationalName);

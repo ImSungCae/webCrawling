@@ -23,6 +23,7 @@ public class WebDriverConfig {
         options.addArguments("--disable-popup-blocking"); // 팝업 무시
 //        options.addArguments("headless"); // 창이없이 프로세스 사용
         options.addArguments("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/127.0.0.0 Safari/537.36");
+        options.addArguments("--ignore-certificate-errors"); // SSL 인증서 오류 무시
         return new ChromeDriver(options);
     }
 }
